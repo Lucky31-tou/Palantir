@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.2; }
+    50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.35; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0.2; }
+}
+
+@keyframes shimmer {
+    0% { text-shadow: 1px 1px 2px #000, 0 0 10px #c5b358, 0 0 12px rgba(197, 179, 88, 0.5); }
+    50% { text-shadow: 1px 1px 2px #000, 0 0 15px #f2e6b6, 0 0 25px rgba(242, 230, 182, 0.7); }
+    100% { text-shadow: 1px 1px 2px #000, 0 0 10px #c5b358, 0 0 12px rgba(197, 179, 88, 0.5); }
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #000;
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+nav > ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+nav > ul > li {
+    padding: 5px;
+}
+
+/* Conteneur pour le titre et le logo */
+.title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem; /* Espace entre le logo et le titre */
+    margin-bottom: 1em;
+}
+
+.title-container img {
+    width: 70px; /* Taille ajustée pour le logo */
+    height: 70px;
+    border-radius: 50%; /* Logo rond */
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(197, 179, 88, 0.4);
+}
+
+/* Titre incantatoire */
+.title-container h1 {
+    font-size: 1.8em;
+    color: #f2e6b6;
+    text-shadow: 1px 1px 2px #000, 0 0 10px #c5b358; /* Fallback */
+    animation: shimmer 5s infinite;
+    margin-bottom: 0; /* Annule la marge par défaut pour l'alignement flex */
+}
+
+/* --- Responsivité --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    nav > ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

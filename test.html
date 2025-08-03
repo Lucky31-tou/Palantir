@@ -1,0 +1,17 @@
+<input type="radio" name="genre" value="homme"> Homme
+<input type="radio" name="genre" value="femme"> Femme
+<input type="radio" name="genre" value="autre"> Autre
+<button id="button"></button>
+
+<script>
+    document.getElementById("button").addEventListener("click", () => {
+        const selected = document.querySelector('input[name="genre"]:checked');
+
+        if (selected) {
+            alert("Valeur sélectionnée :" + selected.value);
+        } else {
+            alert("Aucune option sélectionnée.");
+        }
+    })
+
+</script>

@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.2; }
+    50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.35; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0.2; }
+}
+
+@keyframes shimmer {
+    0% { text-shadow: 1px 1px 2px #000, 0 0 10px #c5b358, 0 0 12px rgba(197, 179, 88, 0.5); }
+    50% { text-shadow: 1px 1px 2px #000, 0 0 15px #f2e6b6, 0 0 25px rgba(242, 230, 182, 0.7); }
+    100% { text-shadow: 1px 1px 2px #000, 0 0 10px #c5b358, 0 0 12px rgba(197, 179, 88, 0.5); }
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cinzel', serif;
+
+    background: radial-gradient(circle at top left, #2b2d2f, #0a0a0a 80%);
+    background-attachment: fixed;
+    
+    color: #EAEAEA; /* Couleur de texte claire pour un bon contraste */
+    display: flex; /* Centrage du conteneur */
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* --- Layout principal (similaire à acceuil.html) --- */
+.container {
+    padding-top: 15vh; /* On déplace le padding ici pour un meilleur contrôle */
+    position: relative; /* Pour s'assurer qu'il est au-dessus des étoiles */
+    z-index: 1;
+    display: flex;
+    justify-content: center; /* Centrer le contenu */
+    align-items: flex-start;
+    width: 90%; /* Utiliser plus de largeur sur mobile */
+    max-width: 650px; /* Une largeur max plus adaptée pour un formulaire */
+}
+
+/* Encadrement magique autour de .right */
+.right {
+    position: relative; /* Pour les pseudo-éléments décoratifs */
+    border: 2px solid #c5b358;
+    box-shadow: 0 0 20px rgba(197, 179, 88, 0.4), 0 0 60px rgba(255, 255, 200, 0.05) inset;
+    background-color: rgba(26, 26, 29, 0.9); /* Légère transparence */
+    border-radius: 8px;
+    text-align: center;
+    padding: 2rem;
+    width: 100%; /* Le bloc prend toute la largeur de son conteneur */
+}
+
+/* Coins décoratifs pour .right */
+.right::before, .right::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-color: #c5b358;
+    border-style: solid;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+.right::before {
+    top: -6px; left: -6px; border-width: 2px 0 0 2px;
+}
+.right::after {
+    bottom: -6px; right: -6px; border-width: 0 2px 2px 0;
+}
+.right:hover::before, .right:hover::after {
+    opacity: 1;
+    border-color: #f2e6b6;
+    box-shadow: 0 0 10px #f2e6b6;
+}
+
+/* Style des liens magiques */
+a {
+    text-decoration: none;
+    color: #c5b358;
+    font-weight: bold;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #c5b358;
+    cursor: pointer;
+}
+
+/* Conteneur pour le titre et le logo */
+.title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem; /* Espace entre le logo et le titre */
+    margin-bottom: 1em;
+}
+
+.title-container img {
+    width: 70px; /* Taille ajustée pour le logo */
+    height: 70px;
+    border-radius: 50%; /* Logo rond */
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(197, 179, 88, 0.4);
+}
+
+/* Titre incantatoire */
+.title-container h1 {
+    font-size: 1.8em;
+    color: #f2e6b6;
+    text-shadow: 1px 1px 2px #000, 0 0 10px #c5b358; /* Fallback */
+    animation: shimmer 5s infinite;
+    margin-bottom: 0; /* Annule la marge par défaut pour l'alignement flex */
+}
+
+/* Texte d’ambiance */
+.intro-text {
+    font-style: italic;
+    color: #b0b0b0;
+    max-width: 50ch; /* Limite la largeur du texte pour une meilleure lisibilité */
+    margin: 0 auto 1.5em auto;
+}
+
+/* Bouton primaire */
+.button-primary {
+    display: inline-block;
+    background-color: #c5b358;
+    color: #1a1a1d;
+    padding: 10px 25px;
+    border-radius: 5px;
+    margin-top: 0.5em;
+    font-weight: bold;
+    text-shadow: none;
+    box-shadow: 0 0 15px rgba(197, 179, 88, 0.4);
+    transition: all 0.3s ease-in-out;
+}
+
+.button-primary:hover {
+    background-color: #f2e6b6;
+    color: #0a0a0a;
+    box-shadow: 0 0 25px rgba(242, 230, 182, 0.7);
+    transform: translateY(-2px);
+}
+
+/* --- Formulaires --- */
+.right form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-size: 0.9em;
+    color: #b0b0b0;
+    font-style: italic;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+    background-color: rgba(10, 10, 10, 0.7);
+    border: 1px solid #c5b358;
+    border-radius: 4px;
+    padding: 10px 15px;
+    color: #EAEAEA;
+    font-family: 'Cinzel', serif;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px rgba(197, 179, 88, 0.2) inset;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+    outline: none;
+    border-color: #f2e6b6;
+    box-shadow: 0 0 10px rgba(242, 230, 182, 0.5), 0 0 8px rgba(242, 230, 182, 0.4) inset;
+}
+
+.refus {
+    display: none;
+}
+
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c5b358' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    padding-right: 2.5rem; /* Espace pour la flèche */
+}
+
+select option {
+    background-color: #0a0a0a;
+    color: #EAEAEA;
+}
+
+.right form .button-primary {
+    margin-top: 1rem; /* Espace au-dessus du bouton */
+}
+
+.form-footer {
+    margin-top: 1rem;
+    font-size: 0.9em;
+    color: #b0b0b0;
+}
+
+/* --- Effet de particules magiques (copié de style_acceuil.css) --- */
+@keyframes animateStars {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-2000px);
+    }
+}
+
+.stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none; /* Permet de cliquer à travers */
+}
+
+#stars1, #stars2, #stars3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2000px; /* Hauteur de la zone de déplacement des étoiles */
+    animation-name: animateStars;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* Couche de petites particules rapides (blanches et dorées) */
+#stars1 {
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: 799px 1101px #c5b358, 1395px 104px #c5b358, 1296px 1530px #EAEAEA, 1196px 112px #c5b358, 1486px 1883px #EAEAEA, 183px 117px #EAEAEA, 1494px 1324px #c5b358, 1244px 1232px #EAEAEA, 144px 1136px #c5b358, 600px 1355px #EAEAEA, 1247px 153px #EAEAEA, 1402px 389px #c5b358, 1383px 1385px #EAEAEA, 155px 1134px #c5b358, 1888px 1983px #EAEAEA;
+    animation-duration: 100s;
+}
+
+/* Couche de particules moyennes */
+#stars2 {
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: 16px 1884px #f2e6b6, 1848px 1493px #f2e6b6, 1296px 1019px #EAEAEA, 153px 1913px #f2e6b6, 1799px 108px #EAEAEA, 1431px 1219px #f2e6b6, 1389px 135px #EAEAEA, 1835px 1153px #f2e6b6, 151px 1106px #EAEAEA, 1119px 1437px #f2e6b6, 183px 117px #EAEAEA, 1494px 1324px #f2e6b6, 1244px 1232px #EAEAEA, 144px 1136px #f2e6b6, 600px 1355px #EAEAEA;
+    animation-duration: 150s;
+    animation-delay: -20s; /* Décale le début de l'animation pour éviter la répétition */
+}
+
+/* Couche de grosses particules lentes pour la profondeur */
+#stars3 {
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: 1055px 1102px #f2e6b6, 195px 123px #EAEAEA, 1079px 1392px #f2e6b6, 1586px 1796px #EAEAEA, 1735px 1883px #f2e6b6, 1097px 1875px #EAEAEA, 1389px 135px #EAEAEA, 1835px 1153px #f2e6b6, 151px 1106px #EAEAEA, 1119px 1437px #f2e6b6;
+    animation-duration: 200s;
+    animation-delay: -40s;
+}
+
+/* Rend la page responsive pour les écrans plus petits */
+@media (max-width: 800px) {
+	.container {
+		padding-top: 8vh;
+		width: 95%; /* Utiliser un peu plus d'espace sur mobile */
+	}
+
+	.right {
+		padding: 1.5rem; /* Réduire le padding sur mobile */
+	}
+
+	.title-container {
+		flex-direction: column; /* Empiler logo et titre sur les petits écrans */
+		gap: 1rem;
+	}
+
+	.title-container h1 {
+		font-size: 1.5em; /* Réduire la taille du titre */
+	}
+}
+
+@media (max-width: 480px) {
+	.right { padding: 1rem; }
+}

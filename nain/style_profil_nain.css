@@ -1,0 +1,754 @@
+/* style_profil_nain.css */
+
+/* --- Importation de polices robustes et runiques --- */
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Roboto+Slab:wght@400;700&display=swap');
+
+/* --- NOUVELLES ANIMATIONS MAGIQUES --- */
+
+/* --- Animation pour une lueur sur le texte, préservant l'ombre existante --- */
+@keyframes text-glow {
+    0% { text-shadow: 2px 2px 4px #000, 0 0 8px rgba(212, 175, 55, 0.6); }
+    50% { text-shadow: 2px 2px 4px #000, 0 0 16px rgba(212, 175, 55, 0.9); }
+    100% { text-shadow: 2px 2px 4px #000, 0 0 8px rgba(212, 175, 55, 0.6); }
+}
+
+/* --- Animation pour les icônes runiques --- */
+@keyframes icon-pulse {
+    0% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); color: #ffd700; text-shadow: 0 0 6px var(--forge-fire); }
+    100% { opacity: 0.8; transform: scale(1); }
+}
+
+/* --- Animation pour une lueur dorée --- */
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 15px rgba(255, 191, 0, 0.6); }
+    50% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.9); }
+    100% { box-shadow: 0 0 15px rgba(255, 191, 0, 0.6); }
+}
+
+/* --- Animation pour la porte de pierre qui s'ouvre --- */
+@keyframes slide-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+
+@keyframes slide-right {
+    from { transform: translateX(0); }
+    to { transform: translateX(100%); }
+}
+
+/* --- Variables de couleurs naines --- */
+:root {
+    --dwarf-stone: #2d3436;      /* Pierre sombre des montagnes */
+    --darker-stone: #212529;     /* Pierre encore plus sombre */
+    --dwarf-gold: #d4af37;       /* Or riche */
+    --forge-fire: #e85d04;       /* Feu de la forge pour les accents */
+    --mithril-silver: #ced4da;   /* Texte clair comme le mithril */
+    --rune-stone: #495057;       /* Pierre pour les cartes */
+}
+
+/* --- Styles généraux --- */
+body {
+    font-family: 'Roboto Slab', serif;
+    /* Un fond de pierre sombre et texturé, évoquant les profondeurs de la montagne */
+    background-color: var(--dwarf-stone);
+    background-image: linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1)),
+                      linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1));
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    color: var(--mithril-silver);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* --- Superposition de la porte de pierre --- */
+#stone-gate-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    display: flex;
+    overflow: hidden; /* Empêche les barres de défilement pendant l'animation */
+}
+
+.gate-door {
+    width: 50%;
+    height: 100%;
+    background-color: var(--darker-stone);
+    background-image: linear-gradient(45deg, rgba(0,0,0,0.2) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.2) 75%, rgba(0,0,0,0.2)), linear-gradient(45deg, rgba(0,0,0,0.2) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.2) 75%, rgba(0,0,0,0.2));
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.7);
+}
+
+.left-door { animation: slide-left 1.5s cubic-bezier(0.7, 0, 0.3, 1) forwards; border-right: 2px solid var(--dwarf-gold); }
+.right-door { animation: slide-right 1.5s cubic-bezier(0.7, 0, 0.3, 1) forwards; border-left: 2px solid var(--dwarf-gold); }
+
+/* --- En-tête --- */
+header {
+    background-color: var(--darker-stone);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Une bordure solide, comme une veine de métal précieux */
+    border-bottom: 4px solid var(--dwarf-gold);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+}
+
+.title-container img {
+    height: 60px;
+    margin-right: 20px;
+    border-radius: 8px; /* Forme plus carrée, comme une pierre taillée */
+    border: 3px solid var(--dwarf-gold);
+    box-shadow: 0 0 12px var(--dwarf-gold);
+}
+
+.title-container h1 {
+    font-family: 'Uncial Antiqua', cursive; /* Police runique */
+    font-weight: 700;
+    font-size: 2.5em;
+    color: var(--mithril-silver);
+    margin: 0;
+    animation: text-glow 4s infinite ease-in-out;
+}
+
+/* --- Barre de recherche --- */
+.search {
+    display: flex;
+    align-items: center;
+    background-color: var(--dwarf-stone);
+    border-radius: 4px;
+    padding: 5px 10px;
+    border: 2px solid var(--rune-stone);
+    transition: all 0.3s ease;
+}
+
+.search #search-input {
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 8px;
+    font-family: 'Roboto Slab', serif;
+    font-size: 1em;
+    color: var(--mithril-silver);
+    width: 250px;
+}
+
+.search #search-input::placeholder {
+    color: #8d99ae;
+    font-style: italic;
+}
+
+.search button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search button svg {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s ease;
+}
+
+.search button:hover svg {
+    transform: scale(1.1);
+}
+
+/* --- Navigation --- */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center; /* Pour un meilleur alignement vertical */
+    gap: 15px; /* Espacement plus gérable entre les éléments */
+}
+
+/* Réinitialisation des styles par défaut du bouton pour qu'il ressemble à un lien */
+.btn-header {
+    background: transparent;
+    border: none;
+    font-family: inherit; /* Pour utiliser la même police que le reste du header */
+    font-size: inherit;   /* Pour avoir la même taille de police */
+    cursor: pointer;
+}
+
+nav ul li a, .btn-header {
+    text-decoration: none;
+    color: var(--mithril-silver);
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 1em; /* Taille de police légèrement réduite pour la compacité */
+    padding: 6px 10px; /* Padding réduit pour que les boutons soient moins larges */
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    display: flex; /* Assure un bon alignement pour les liens avec icônes */
+    align-items: center;
+}
+
+nav ul li a:hover, .btn-header:hover {
+    color: var(--darker-stone);
+    background-color: var(--dwarf-gold);
+    text-shadow: none;
+    border-color: var(--darker-stone);
+}
+
+/* Style spécifique pour le bouton de déconnexion qui ne contient qu'une icône */
+nav ul .logout-button a {
+    padding: 6px; /* Padding carré pour un bouton icône */
+}
+
+nav ul .logout-button a:hover {
+    background-color: var(--forge-fire); /* Couleur plus distinctive au survol */
+    border-color: var(--darker-stone);
+}
+
+/* --- Contenu principal --- */
+main {
+    display: grid;
+    grid-template-columns: 350px 1fr; /* Colonne pour le profil, le reste pour les posts */
+    gap: 40px;
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* --- Section Profil --- */
+.profil {
+    /* Une stèle de pierre gravée */
+    background-color: var(--rune-stone);
+    border: 3px solid var(--darker-stone);
+    border-style: outset;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.6);
+    text-align: center;
+    position: sticky; /* Pour que le profil reste visible en scrollant */
+    top: 140px; /* Ajusté pour l'en-tête collant */
+}
+
+.photo-profil {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid var(--dwarf-gold);
+    object-fit: cover;
+    margin-bottom: 20px;
+    /* Lueur d'or */
+    animation: pulse-glow 3s infinite ease-in-out;
+}
+
+.profil h2 {
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 1.8em;
+    color: var(--mithril-silver);
+    margin: 0 0 25px 0;
+    text-shadow: 1px 1px 3px #000;
+}
+
+.profil ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.profil ul li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--darker-stone);
+    position: relative;
+    padding-left: 30px;
+}
+
+.profil ul li:last-child {
+    border-bottom: none;
+}
+
+/* Ajout d'une icône décorative avant chaque élément de liste */
+.profil ul li::before {
+    content: '◈'; /* Un symbole runique/géométrique */
+    position: absolute;
+    left: 0;
+    color: var(--forge-fire);
+    font-size: 1.2em;
+    animation: icon-pulse 3s infinite ease-in-out;
+}
+
+/* --- Section pour le bouton de nouveau post --- */
+.new-post {
+    text-align: center; /* Centre le bouton horizontalement */
+    margin-bottom: 30px; /* Ajoute de l'espace avant la liste des posts */
+}
+
+/* Style principal du bouton "Grave tes mots" */
+#new-post-btn {
+    background: linear-gradient(145deg, #5a5a5a, #3c3c3c); /* Dégradé imitant la pierre ou le métal brut */
+    color: #e0cda8; /* Couleur dorée/bronze, comme des runes */
+    font-family: 'Uncial Antiqua', cursive; /* Police runique cohérente avec le titre */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid #2a2a2a; /* Bordure sombre et épaisse */
+    border-radius: 4px; /* Bords nets, comme de la pierre taillée */
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 1px 1px 2px #111; /* Ombre pour un effet de gravure */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4), inset 0 -2px 2px rgba(0,0,0,0.3); /* Effet de relief 3D */
+}
+
+/* Effet au survol de la souris : le métal s'éclaircit */
+#new-post-btn:hover {
+    background: linear-gradient(145deg, #6a6a6a, #4c4c4c);
+    color: #f0e0b8; /* Les runes deviennent plus lumineuses */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.45), inset 0 -2px 2px rgba(255, 193, 7, 0.2); /* Lueur de forge */
+}
+
+/* Effet au clic : le bouton s'enfonce */
+#new-post-btn:active {
+    transform: translateY(2px); /* Simule l'enfoncement */
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(0,0,0,0.4);
+}
+
+
+/* --- Section des posts --- */
+.post-ami {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.post {
+    background-color: var(--rune-stone);
+    border: 2px solid var(--darker-stone);
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.4);
+    overflow: hidden; /* Pour que l'image ne dépasse pas les coins arrondis */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.post:hover {
+    transform: translateY(-5px);
+    box-shadow: 8px 8px 15px rgba(0,0,0,0.5), 0 0 20px rgba(212, 175, 55, 0.4);
+    border-color: var(--dwarf-gold);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--darker-stone);
+}
+
+.post-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--mithril-silver);
+    margin-right: 15px;
+}
+
+.post-author {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--mithril-silver);
+}
+
+.delete-post {
+    margin-left: auto;
+}
+
+.post-content {
+    padding: 20px;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.post-content p {
+    margin-top: 0;
+}
+
+.post-image {
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+    border-radius: 8px;
+}
+
+.btn-accept {
+    display: flex;
+    justify-content: center;
+}
+
+/* --- Boîte de dialogue pour nouveau post --- */
+#create-new-post {
+    background-color: var(--rune-stone);
+    border: 4px solid var(--darker-stone);
+    border-style: outset;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    width: 90%;
+    max-width: 500px;
+    padding: 25px;
+    color: var(--mithril-silver);
+    text-align: center; /* Centrer les enfants */
+}
+
+/* Fond assombri lorsque la boîte de dialogue est ouverte */
+#create-new-post::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+/* Zone de texte pour le nouveau post */
+#new-post-text {
+    resize: none;
+    width: 100%;
+    height: 150px;
+    box-sizing: border-box;
+    font-family: 'Roboto Slab', serif;
+    background-color: var(--darker-stone);
+    color: var(--mithril-silver);
+    border: 2px solid #1a1a1a;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+#new-post-text::placeholder {
+    color: #8d99ae;
+    font-style: italic;
+}
+
+/* Style commun pour les boutons de la dialog */
+#create-new-post button {
+    font-family: 'Uncial Antiqua', cursive;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 1px 1px 2px #111;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+
+/* Bouton "Accepter" */
+#add {
+    background: linear-gradient(145deg, #b8860b, #8b4513); /* Dégradé or/bronze */
+    color: #fff;
+    border: 2px solid #5a3a0a;
+    margin-bottom: 10px; /* Espace entre les deux boutons */
+}
+
+#add:hover {
+    background: linear-gradient(145deg, #daa520, #a0522d);
+    box-shadow: 0 0 10px var(--dwarf-gold);
+}
+
+/* Bouton "Refuser" */
+#no-add {
+    background: linear-gradient(145deg, #5a5a5a, #3c3c3c); /* Dégradé pierre/métal */
+    color: #e0cda8;
+    border: 2px solid #2a2a2a;
+}
+
+#no-add:hover {
+    background: linear-gradient(145deg, #6a6a6a, #4c4c4c);
+    color: #fff;
+}
+
+/* Styles pour les éléments générés dynamiquement par le script de profil */
+
+/* Conteneur pour les résultats de recherche */
+.search-list {
+    /* display: flex; est déjà défini dans le JS, mais c'est bien de le garder ici pour la clarté */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    width: 100%;
+    /* Le JS gère l'affichage (display: 'flex' ou 'none'), donc pas besoin de le cacher ici par défaut */
+}
+
+/* Message "non trouvé" */
+.search-list p {
+    color: #b0b0b0; /* Une couleur claire pour un message subtil */
+    font-style: italic;
+    font-size: 1.1em;
+    text-align: center;
+    padding: 20px;
+}
+
+/* La carte de profil pour le résultat de la recherche */
+/* On utilise l'ID pour être plus spécifique et éviter les conflits */
+#search-result-profile {
+    background-color: rgba(10, 25, 15, 0.7); /* Un fond sombre et thématique (vert elfique) */
+    border: 1px solid #c0c0c0; /* Une bordure argentée */
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px;
+    width: 90%;
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    color: #e0e0e0;
+}
+
+/* Photo de profil dans la carte */
+#search-result-profile .photo-profil {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* La rend circulaire */
+    border: 3px solid #ffd700; /* Une bordure dorée */
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+/* Nom de l'utilisateur */
+#search-result-profile h2 {
+    color: #ffffff;
+    font-size: 1.9em;
+    margin-bottom: 15px;
+    /* Pour une police élégante, pensez à importer une police comme 'Cinzel' ou 'Lora' dans votre HTML */
+    font-family: 'Cinzel', serif; 
+}
+
+/* Liste des détails de la bio */
+#search-result-profile ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 20px 0;
+}
+
+#search-result-profile li {
+    font-size: 1em;
+    margin-bottom: 8px;
+    color: #c5c5c5;
+}
+
+/* Le texte de la question */
+#search-result-profile h3 {
+    color: #ffd700; /* Couleur dorée pour l'emphase */
+    font-size: 1.2em;
+    font-weight: normal;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+/* Conteneur pour les boutons accepter/refuser */
+#search-result-profile .btn-accept {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espace entre les boutons */
+    width: 100%;
+    align-items: center;
+}
+
+/* Style général pour les deux boutons */
+#search-result-profile .btn-accept-profil {
+    background-color: transparent;
+    border: 2px solid;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 80%;
+    max-width: 400px;
+    color: #e0e0e0;
+}
+
+/* Style spécifique pour le bouton "Accepter" */
+#search-result-profile #btn-accept-friend {
+    border-color: #2e8b57; /* Vert marin */
+}
+
+#search-result-profile #btn-accept-friend:hover {
+    background-color: #2e8b57;
+    color: #ffffff;
+    box-shadow: 0 0 12px #2e8b57;
+}
+
+/* Style spécifique pour le bouton "Refuser" */
+#search-result-profile #btn-refuse-friend {
+    border-color: #b22222; /* Rouge brique */
+}
+
+#search-result-profile #btn-refuse-friend:hover {
+    background-color: #b22222;
+    color: #ffffff;
+    box-shadow: 0 0 12px #b22222;
+}
+
+/* --- Styles pour la liste d'amis (générée par JS) --- */
+.friend-list {
+    /* Le JS gère l'affichage (display: 'flex' ou 'none'), mais on définit la direction ici */
+    display: none; /* Caché par défaut, le JS le montre */
+    flex-direction: column;
+    gap: 15px; /* Espace entre chaque ami */
+    background-color: var(--rune-stone);
+    border: 2px solid var(--darker-stone);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.4);
+    width: 100%; /* Prend toute la largeur de son conteneur grid */
+}
+
+/* Chaque ligne d'ami dans la liste. On réutilise .post-header du JS. */
+.friend-list .post-header {
+    border-radius: 6px;
+    justify-content: space-between; /* Pousse le bouton sur la droite */
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+    transition: background-color 0.3s ease;
+    padding: 10px 15px; /* Un peu moins de padding que les vrais en-têtes de post */
+}
+
+.friend-list .post-header:hover {
+    background-color: #3a4147; /* Un peu plus clair au survol */
+}
+
+/* Le nom de l'ami a besoin d'un peu plus d'espace */
+.friend-list .post-author {
+    flex-grow: 1; /* Permet au nom de prendre l'espace disponible */
+    margin-right: 15px; /* Espace avant le bouton */
+}
+
+/* Le bouton pour supprimer un ami */
+.friend-list .post-header button, .delete-post {
+    background: linear-gradient(145deg, #782d0c, #e85d04); /* Dégradé de feu de forge */
+    color: var(--mithril-silver);
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 0.9em;
+    border: 1px solid #4f1e08;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 1px 1px 2px #111;
+    white-space: nowrap; /* Empêche le texte du bouton de passer à la ligne */
+}
+
+.friend-list .post-header button:hover, .delete-post:hover {
+    background: linear-gradient(145deg, #9a390f, #ff752d);
+    box-shadow: 0 0 8px var(--forge-fire);
+}
+
+/* Le bouton pour fermer la liste d'amis */
+.friend-list #leave {
+    background: linear-gradient(145deg, #5a5a5a, #3c3c3c);
+    color: #e0cda8;
+    font-family: 'Uncial Antiqua', cursive;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid #2a2a2a;
+    border-radius: 4px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 1px 1px 2px #111;
+    margin-top: 20px; /* Espace au-dessus du bouton */
+    align-self: center; /* Le centrer dans le conteneur flex */
+}
+
+.friend-list #leave:hover {
+    background: linear-gradient(145deg, #6a6a6a, #4c4c4c);
+    color: #fff;
+}
+
+/* --- Media Queries pour la responsivité --- */
+
+/* Pour les tablettes et écrans intermédiaires */
+@media (max-width: 1200px) {
+    main {
+        grid-template-columns: 300px 1fr; /* Réduire la colonne de profil */
+        gap: 30px;
+        padding: 30px;
+    }
+}
+
+/* Pour les tablettes en mode portrait */
+@media (max-width: 992px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+    }
+
+    .title-container {
+        margin-bottom: 15px;
+    }
+
+    nav {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    nav ul {
+        justify-content: flex-start;
+        gap: 15px; /* Utiliser gap pour l'espacement */
+    }
+
+    nav ul li {
+        margin-left: 0;
+    }
+
+    .search {
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    main {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        padding: 20px;
+    }
+
+    .profil {
+        position: static; /* Le profil ne reste plus collé */
+        top: auto;
+        margin-bottom: 30px;
+    }
+}
+
+/* Pour les téléphones mobiles */
+@media (max-width: 576px) {
+    .title-container h1 {
+        font-size: 2em; /* Réduire la taille du titre */
+    }
+
+    .title-container img {
+        height: 50px; /* Réduire la taille du logo */
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}

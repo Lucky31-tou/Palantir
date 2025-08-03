@@ -1,0 +1,821 @@
+/* style_profil_elfe.css */
+
+/* --- Importation des polices elfiques --- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+/* --- Animation pour un effet de lueur pulsante --- */
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.5); }
+    50% { box-shadow: 0 0 25px rgba(255, 223, 107, 0.8); }
+    100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.5); }
+}
+
+/* --- Animation pour le fond cosmique --- */
+@keyframes move-bg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- Animation pour les étoiles scintillantes --- */
+@keyframes twinkle {
+    0% { opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0; }
+}
+
+/* --- NOUVELLES ANIMATIONS MAGIQUES --- */
+
+/* --- Animation pour une lueur sur le texte --- */
+@keyframes text-glow {
+    0% { text-shadow: 0 0 8px rgba(255, 215, 0, 0.6); }
+    50% { text-shadow: 0 0 16px rgba(255, 223, 107, 0.9), 0 0 2px rgba(255, 255, 255, 0.2); }
+    100% { text-shadow: 0 0 8px rgba(255, 215, 0, 0.6); }
+}
+
+/* --- Animation pour les icônes de profil --- */
+@keyframes icon-pulse {
+    0% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); color: #fff; }
+    100% { opacity: 0.7; transform: scale(1); }
+}
+
+/* --- Animation pour le voile de lumière qui se lève --- */
+@keyframes reveal-from-starlight {
+    from { transform: scaleY(1); }
+    to { transform: scaleY(0); }
+}
+
+/* --- Styles généraux --- */
+body {
+    font-family: 'EB Garamond', serif;
+    /* Un fond crépusculaire, évoquant la magie de la nuit elfique */
+    background: linear-gradient(160deg, #0d1b2a 0%, #1b263b 40%, #415a77 100%);
+    background-size: 400% 400%; /* Agrandir le fond pour l'animation */
+    animation: move-bg 30s ease infinite; /* Appliquer l'animation de mouvement */
+    color: #e0e1dd; /* Une couleur de texte claire et douce, comme la lumière des étoiles */
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden; /* Empêcher le défilement horizontal causé par les étoiles */
+}
+
+/* --- Superposition du voile de lumière --- */
+#starlight-veil-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0d1b2a; /* Couleur du fond de base, comme une nuit sans étoiles */
+    z-index: 9999; /* Au-dessus de tout */
+    transform-origin: top; /* L'animation part du haut */
+    animation: reveal-from-starlight 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); /* Ombre lumineuse pour un effet magique */
+}
+
+/* --- En-tête --- */
+header {
+    /* Un fond semi-transparent pour laisser entrevoir le ciel étoilé */
+    background-color: rgba(27, 38, 59, 0.6);
+    backdrop-filter: blur(10px); /* Effet de verre dépoli, très magique */
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Une bordure lumineuse pour délimiter l'en-tête */
+    border-bottom: 1px solid rgba(129, 178, 202, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* --- Fond animé avec étoiles --- */
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Placer derrière tout le contenu */
+}
+
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+/* Couche 1: petites étoiles, nombreuses et rapides */
+#stars1 {
+    box-shadow: 
+        7vw 8vh 0 0 #FFF, 98vw 4vh 0 0 #FFF, 12vw 13vh 0 0 #FFF, 
+        8vw 81vh 0 0 #FFF, 66vw 3vh 0 0 #FFF, 5vw 60vh 0 0 #FFF, 
+        55vw 37vh 0 0 #FFF, 63vw 1vh 0 0 #FFF, 2vw 36vh 0 0 #FFF, 
+        90vw 23vh 0 0 #FFF, 45vw 10vh 0 0 #FFF, 27vw 27vh 0 0 #FFF;
+    animation: twinkle 10s infinite linear;
+}
+
+/* Couche 2: étoiles moyennes, moins nombreuses */
+#stars2 {
+    box-shadow: 
+        15vw 45vh 1px 1px #FFF, 80vw 70vh 1px 1px #FFF, 50vw 20vh 1px 1px #FFF,
+        5vw 90vh 1px 1px #FFF, 95vw 10vh 1px 1px #FFF, 30vw 5vh 1px 1px #FFF;
+    animation: twinkle 15s infinite linear;
+    animation-delay: -5s; /* Décalage pour ne pas scintiller en même temps */
+}
+
+/* Couche 3: grosses étoiles brillantes, rares et lentes */
+#stars3 {
+    box-shadow: 
+        25vw 55vh 2px 2px #FFF, 70vw 15vh 2px 2px #FFF, 5vw 25vh 2px 2px #FFF;
+    animation: twinkle 20s infinite linear;
+    animation-delay: -10s;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+}
+
+.title-container img {
+    height: 60px;
+    margin-right: 20px;
+    border-radius: 50%;
+    border: 2px solid #d4af37; /* Bordure dorée */
+    box-shadow: 0 0 12px #d4af37;
+}
+
+.title-container h1 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 2.5em;
+    color: #f1faee;
+    margin: 0;
+    animation: text-glow 4s infinite ease-in-out;
+}
+
+/* --- Barre de recherche --- */
+.search {
+    display: flex;
+    align-items: center;
+    background-color: rgba(13, 27, 42, 0.5);
+    border-radius: 30px;
+    padding: 5px 10px;
+    border: 1px solid rgba(129, 178, 202, 0.4);
+    transition: all 0.3s ease;
+}
+
+.search #search-input {
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 8px;
+    font-family: 'EB Garamond', serif;
+    font-size: 1em;
+    color: #e0e1dd;
+    width: 250px;
+}
+
+.search #search-input::placeholder {
+    color: #778da9;
+    font-style: italic;
+}
+
+.search button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search button svg {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s ease;
+}
+
+.search button:hover svg {
+    transform: scale(1.1);
+}
+
+/* --- Navigation --- */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+/* Réinitialisation des styles par défaut du bouton pour qu'il ressemble à un lien */
+.btn-header {
+    background: transparent;
+    border: none;
+    font-family: inherit; /* Pour utiliser la même police que le reste du header */
+    font-size: inherit;   /* Pour avoir la même taille de police */
+    cursor: pointer;
+}
+
+nav ul li a, .btn-header {
+    text-decoration: none;
+    color: #cdd6f4;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1em;
+    padding-bottom: 5px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav ul li a::after, .btn-header::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 50%;
+    background-color: #d4af37; /* Or */
+    transition: all 0.3s ease-in-out;
+}
+
+nav ul li a:hover, .btn-header:hover {
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+nav ul li a:hover::after, .btn-header:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* --- Contenu principal --- */
+main {
+    display: grid;
+    grid-template-columns: 350px 1fr; /* Colonne pour le profil, le reste pour les posts */
+    gap: 40px;
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* --- Section Profil --- */
+.profil {
+    /* Effet de carte magique, semi-transparente et floutée */
+    background-color: rgba(27, 38, 59, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(129, 178, 202, 0.3);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    text-align: center;
+    position: sticky; /* Pour que le profil reste visible en scrollant */
+    top: 140px; /* Ajusté pour l'en-tête collant */
+}
+
+.photo-profil {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #d4af37; /* Bordure dorée épaisse */
+    object-fit: cover;
+    margin-bottom: 20px;
+    /* Animation de lueur magique */
+    animation: pulse-glow 3s infinite ease-in-out;
+}
+
+.profil h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8em;
+    color: #f1faee;
+    margin: 0 0 25px 0;
+}
+
+.profil ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    font-size: 1.1em;
+}
+
+.profil ul li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(129, 178, 202, 0.2);
+    position: relative;
+    padding-left: 30px;
+}
+
+.profil ul li:last-child {
+    border-bottom: none;
+}
+
+/* Ajout d'une icône décorative avant chaque élément de liste */
+.profil ul li::before {
+    content: '✧'; /* Une étoile ou un autre symbole elfique */
+    position: absolute;
+    left: 0;
+    color: #ffd700;
+    font-size: 1.2em;
+    animation: icon-pulse 3.5s infinite ease-in-out;
+}
+
+/* --- Section pour le bouton de nouveau post --- */
+.new-post {
+    text-align: center;
+    margin-bottom: 30px; /* Espace avant la liste des posts */
+}
+
+/* Style principal du bouton "Grave tes mots" */
+#new-post-btn {
+    background: transparent; /* S'intègre avec le fond magique */
+    color: #cdd6f4; /* Couleur argentée/bleutée comme la navigation */
+    font-family: 'Cinzel', serif; /* Police élégante et thématique */
+    font-size: 1.1em;
+    letter-spacing: 1.5px;
+    border: 1px solid rgba(212, 175, 55, 0.7); /* Bordure dorée subtile */
+    border-radius: 50px; /* Forme organique et douce */
+    padding: 14px 28px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.5); /* Lueur dorée sur le texte */
+    box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.2); /* Lueur interne */
+}
+
+/* Effet au survol : la lueur s'intensifie */
+#new-post-btn:hover {
+    color: #ffffff;
+    background-color: rgba(212, 175, 55, 0.1); /* Léger fond doré */
+    border-color: #d4af37;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.6), inset 0 0 10px rgba(212, 175, 55, 0.3);
+    transform: translateY(-2px); /* Léger soulèvement */
+}
+
+/* Effet au clic : une impulsion lumineuse */
+#new-post-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5), inset 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+/* --- Section des posts --- */
+.post-ami {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.search-list {
+    display: none;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.post {
+    /* Même effet magique que la carte de profil */
+    background-color: rgba(27, 38, 59, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(129, 178, 202, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    overflow: hidden; /* Pour que l'image ne dépasse pas les coins arrondis */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45), 0 0 20px rgba(212, 175, 55, 0.4);
+    border-color: rgba(212, 175, 55, 0.7);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: rgba(13, 27, 42, 0.5);
+}
+
+.post-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #778da9; /* Bordure argentée/bleutée */
+    margin-right: 15px;
+}
+
+.post-author {
+    font-family: 'Cinzel', serif;
+    font-weight: 500;
+    font-size: 1.2em;
+    color: #e0e1dd;
+}
+
+.delete-post {
+    margin-left: auto;
+}
+
+.post-content {
+    padding: 20px;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.post-content p {
+    margin-top: 0;
+}
+
+.post-image {
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+    border-radius: 8px;
+}
+
+.btn-accept {
+    display: flex;
+    justify-content: center;
+}
+
+/* --- Boîte de dialogue pour nouveau post --- */
+#create-new-post {
+    /* Reprend le style des cartes magiques */
+    background-color: rgba(27, 38, 59, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(129, 178, 202, 0.4);
+    border-radius: 12px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 550px;
+    padding: 30px;
+    color: #e0e1dd;
+    text-align: center;
+}
+
+/* Fond assombri et flouté */
+#create-new-post::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+}
+
+/* Zone de texte pour le nouveau post */
+#new-post-text {
+    resize: none;
+    width: 100%;
+    height: 150px;
+    box-sizing: border-box;
+    font-family: 'EB Garamond', serif;
+    background-color: rgba(13, 27, 42, 0.7);
+    color: #e0e1dd;
+    border: 1px solid rgba(129, 178, 202, 0.3);
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#new-post-text:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+#new-post-text::placeholder {
+    color: #778da9;
+    font-style: italic;
+}
+
+/* Style commun pour les boutons de la dialog */
+#create-new-post button {
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    border-radius: 50px; /* Forme organique */
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    text-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+
+/* Bouton "Publier" - style lumineux et doré */
+#add {
+    background: linear-gradient(145deg, #b89a5b, #d4af37);
+    color: #0d1b2a;
+    border: none;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    margin-bottom: 12px;
+}
+
+#add:hover {
+    background: linear-gradient(145deg, #c8aa6b, #e4bf47);
+    box-shadow: 0 6px 20px rgba(255, 223, 107, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Bouton "Annuler" - style sobre et transparent */
+#no-add {
+    background: transparent;
+    color: #cdd6f4;
+    border: 1px solid #778da9;
+}
+
+#no-add:hover {
+    background-color: rgba(129, 178, 202, 0.15);
+    color: #fff;
+    border-color: #cdd6f4;
+}
+
+/* Styles pour les éléments générés dynamiquement par script_profil_elfe.js */
+
+/* Conteneur pour les résultats de recherche */
+.search-list {
+    /* display: flex; est déjà défini dans le JS, mais c'est bien de le garder ici pour la clarté */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    width: 100%;
+    /* Le JS gère l'affichage (display: 'flex' ou 'none'), donc pas besoin de le cacher ici par défaut */
+}
+
+/* Message "non trouvé" */
+.search-list p {
+    color: #b0b0b0; /* Une couleur claire pour un message subtil */
+    font-style: italic;
+    font-size: 1.1em;
+    text-align: center;
+    padding: 20px;
+}
+
+/* La carte de profil pour le résultat de la recherche */
+/* On utilise l'ID pour être plus spécifique et éviter les conflits */
+#search-result-profile {
+    background-color: rgba(10, 25, 15, 0.7); /* Un fond sombre et thématique (vert elfique) */
+    border: 1px solid #c0c0c0; /* Une bordure argentée */
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px;
+    width: 90%;
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    color: #e0e0e0;
+}
+
+/* Photo de profil dans la carte */
+#search-result-profile .photo-profil {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* La rend circulaire */
+    border: 3px solid #ffd700; /* Une bordure dorée */
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+/* Nom de l'utilisateur */
+#search-result-profile h2 {
+    color: #ffffff;
+    font-size: 1.9em;
+    margin-bottom: 15px;
+    /* Pour une police élégante, pensez à importer une police comme 'Cinzel' ou 'Lora' dans votre HTML */
+    font-family: 'Cinzel', serif; 
+}
+
+/* Liste des détails de la bio */
+#search-result-profile ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 20px 0;
+}
+
+#search-result-profile li {
+    font-size: 1em;
+    margin-bottom: 8px;
+    color: #c5c5c5;
+}
+
+/* Le texte de la question */
+#search-result-profile h3 {
+    color: #ffd700; /* Couleur dorée pour l'emphase */
+    font-size: 1.2em;
+    font-weight: normal;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+/* Conteneur pour les boutons accepter/refuser */
+#search-result-profile .btn-accept {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espace entre les boutons */
+    width: 100%;
+    align-items: center;
+}
+
+/* Style général pour les deux boutons */
+#search-result-profile .btn-accept-profil {
+    background-color: transparent;
+    border: 2px solid;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 80%;
+    max-width: 400px;
+    color: #e0e0e0;
+}
+
+/* Style spécifique pour le bouton "Accepter" */
+#search-result-profile #btn-accept-friend {
+    border-color: #2e8b57; /* Vert marin */
+}
+
+#search-result-profile #btn-accept-friend:hover {
+    background-color: #2e8b57;
+    color: #ffffff;
+    box-shadow: 0 0 12px #2e8b57;
+}
+
+/* Style spécifique pour le bouton "Refuser" */
+#search-result-profile #btn-refuse-friend {
+    border-color: #b22222; /* Rouge brique */
+}
+
+#search-result-profile #btn-refuse-friend:hover {
+    background-color: #b22222;
+    color: #ffffff;
+    box-shadow: 0 0 12px #b22222;
+}
+
+/* --- Liste d'amis/abonnés --- */
+
+/* Conteneur principal de la liste */
+.friend-list {
+    /* display: flex; est géré par le JS, mais on définit la direction ici */
+    flex-direction: column;
+    gap: 15px;
+    /* On reprend le style des cartes magiques */
+    background-color: rgba(27, 38, 59, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(129, 178, 202, 0.3);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 2rem;
+}
+
+/* Chaque ligne d'ami/abonné (on réutilise .post-header) */
+.friend-list .post-header {
+    background-color: transparent; /* On annule le fond par défaut de .post-header */
+    border-bottom: 1px solid rgba(129, 178, 202, 0.2);
+    padding: 15px 10px;
+    justify-content: space-between; /* Pour espacer le nom et le bouton */
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.friend-list .post-header:hover {
+    background-color: rgba(212, 175, 55, 0.1); /* Légère lueur dorée au survol */
+}
+
+/* On s'assure que le texte est lisible sur le fond sombre */
+.friend-list .post-author {
+    color: #e0e1dd;
+    font-weight: 500;
+    flex-grow: 1; /* Permet au nom de prendre l'espace disponible */
+    margin-left: 15px;
+}
+
+/* Bouton pour "Briser le lien" */
+.friend-list .post-header button, .delete-post {
+    background-color: transparent;
+    border: 1px solid #b22222; /* Rouge sombre, comme une braise qui s'éteint */
+    color: #ffcdd2; /* Rouge clair, comme une lueur résiduelle */
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    padding: 8px 12px;
+    border-radius: 20px; /* Forme elfique arrondie */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* Empêche le bouton de se réduire */
+}
+
+.friend-list .post-header button:hover, .delete-post:hover {
+    background-color: #b22222;
+    color: white;
+    box-shadow: 0 0 10px #b22222;
+}
+
+/* Bouton pour quitter la liste et revenir */
+#leave {
+    align-self: center; /* Pour le centrer dans le conteneur flex */
+    margin-top: 25px;
+    /* On reprend le style du bouton "Publier" de la modale */
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    border-radius: 50px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 8px rgba(0,0,0,0.5);
+    background: linear-gradient(145deg, #b89a5b, #d4af37);
+    color: #0d1b2a;
+    border: none;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+#leave:hover {
+    background: linear-gradient(145deg, #c8aa6b, #e4bf47);
+    box-shadow: 0 6px 20px rgba(255, 223, 107, 0.6);
+    transform: translateY(-2px);
+}
+
+/* --- Media Queries pour la responsivité --- */
+
+/* Pour les tablettes et écrans intermédiaires */
+@media (max-width: 1200px) {
+    main {
+        grid-template-columns: 300px 1fr; /* Réduire la colonne de profil */
+        gap: 30px;
+        padding: 30px;
+    }
+}
+
+/* Pour les tablettes en mode portrait */
+@media (max-width: 992px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+    }
+
+    .title-container {
+        margin-bottom: 15px;
+    }
+
+    nav {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    nav ul {
+        justify-content: flex-start;
+        gap: 15px; /* Utiliser gap pour l'espacement */
+    }
+
+    nav ul li {
+        margin-left: 0;
+    }
+
+    .search {
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    main {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        padding: 20px;
+    }
+
+    .profil {
+        position: static; /* Le profil ne reste plus collé */
+        top: auto;
+        margin-bottom: 30px;
+    }
+}
+
+/* Pour les téléphones mobiles */
+@media (max-width: 576px) {
+    .title-container h1 {
+        font-size: 2em; /* Réduire la taille du titre */
+    }
+
+    .title-container img {
+        height: 50px; /* Réduire la taille du logo */
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}

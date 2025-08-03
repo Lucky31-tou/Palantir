@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Palantír - Bio</title>
+        <link rel="stylesheet" href="style_connect.css">
+        <link rel="stylesheet" href="style_bio.css">
+    </head>
+    <body>
+        <div class="stars-container">
+            <div id="stars1"></div>
+            <div id="stars2"></div>
+            <div id="stars3"></div>
+        </div>
+        <div class="container">
+            <div class="right">
+                <div class="title-container">
+                    <img src="logo.jpg" alt="Logo de Palantír">
+                    <h1>Raconte-moi ton histoire</h1>
+                </div>
+                <p class="intro-text">Le Palantír souhaite en savoir plus sur toi. Partage ton passé pour forger ton avenir.</p>
+                <main>
+                    <section id="elfe">
+                        <div class="ask_bio">
+                            <form id="bio-elve">
+                                <h2>Enfants d'Ilúvatar, nés de la lumière des étoiles</h2>
+                                <div class="form-group">
+                                    <label for="line-elve">Dis-moi la nature de ton sang</label>
+                                    <select name="line" id="line-elve">
+                                        <option value=""></option>
+                                        <option value="Vanyar">Vanyar</option>
+                                        <option value="Noldor">Noldor</option>
+                                        <option value="Falmari">Falmari</option>
+                                        <option value="Sindar">Sindar</option>
+                                        <option value="Nandor">Nandor</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="king-elve">Révèle le nom du Trône que tu sers</label>
+                                    <select name="king" id="king-elve">
+                                        <option value=""></option>
+                                        <option value="Valinor">Valinor</option>
+                                        <option value="Doriath">Doriath</option>
+                                        <option value="Gondolin">Gondolin</option>
+                                        <option value="Nargothrond">Nargothrond</option>
+                                        <option value="Lothlórien">Lothlórien</option>
+                                        <option value="Fondcombe">Fondcombe</option>
+                                        <option value="Royaume Sylvestre">Royaume Sylvestre</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="act-elve">Parmis les enseignements que nous t'avons offert, lequel utilises-tu ?</label>
+                                    <input type="text" name="act" id="act-elve" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="passion-elve">Mets la lumière sur ceux que le don que tu maitrises</label>
+                                    <select name="passion" id="passion-elve">
+                                        <option value=""></option>
+                                        <option value="Art">Les arts</option>
+                                        <option value="Guerre">La guerre</option>
+                                        <option value="Nature">La nature</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="public-elve"><input type="radio" name="pp" id="public-elve" value="public" checked> Que tous contemplent tes chroniques</label>
+                                    <label for="priv-elve"><input type="radio" name="pp" id="priv-elve" value="privee"> Que seuls les élus soient témoins de tes exploits</label>
+                                </div>
+                                <button type="submit" class="button-primary">Plonge-toi dans la lumière du Palantír</button>
+                            </form>
+                        </div>
+                    </section>
+
+                    <section id="homme">
+                        <div class="ask_bio">
+                            <form id="bio-man">
+                                <h2>Fils des Deux Destins</h2>
+                                <div class="form-group">
+                                    <label for="line-man">Dis-moi la nature de ton sang</label>
+                                    <select name="line" id="line-man">
+                                        <option value=""></option>
+                                        <option value="Edain">Edain</option>
+                                        <option value="Numénoréen">Numénoréen</option>
+                                        <option value="Rohirrim">Rohirrim</option>
+                                        <option value="Homme de Dale">Homme de Dale</option>
+                                        <option value="Homme de l'Est">Homme de l'Est</option>
+                                        <option value="Homme du Sud">Homme du Sud</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="king-man">Révèle le nom du Trône que tu sers</label>
+                                    <select name="king" id="king-man">
+                                        <option value=""></option>
+                                        <option value="Numénor">Numénor</option>
+                                        <option value="Arnor">Arnor</option>
+                                        <option value="Gondor">Gondor</option>
+                                        <option value="Rohan">Rohan</option>
+                                        <option value="Dale">Dale</option>
+                                        <option value="Dorwinion">Dorwinion</option>
+                                        <option value="Umbar">Umbar</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="act-man">Parles, comment sers-tu ton Roi ?</label>
+                                    <input type="text" name="act" id="act-man" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="war-man">Laisses tomber le voile, que je vois à quelle bataille tu as pris part</label>
+                                    <input type="text" name="war" id="war-man" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="public-man"><input type="radio" name="pp" id="public-man" value="public" checked> Que tous contemplent tes chroniques</label>
+                                    <label for="priv-man"><input type="radio" name="pp" id="priv-man" value="privee"> Que seuls les élus soient témoins de tes exploits</label>
+                                </div>
+                                <button type="submit" class="button-primary">Plonge-toi dans la lumière du Palantír</button>
+                            </form>
+                        </div>
+                    </section>
+
+                    <section id="nain">
+                        <div class="ask-bio">
+                            <form id="bio-nain">
+                                <h2>Ô enfant d'Aulë</h2>
+                                <div class="form-group">
+                                    <label for="line-nain">Dis-moi la nature de ton sang</label>
+                                    <select name="line" id="line-nain">
+                                        <option value=""></option>
+                                        <option value="Durin">Durin</option>
+                                        <option value="Firebeards">Firebeards</option>
+                                        <option value="Broadbeams">Broadbeams</option>
+                                        <option value="Ironfists">Ironfists</option>
+                                        <option value="Stiffbeards">Stiffbeards</option>
+                                        <option value="Blacklocks">Blacklocks</option>
+                                        <option value="Stonefoots">Stonefoots</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="king-nain">Révèle le nom du Trône que tu sers</label>
+                                    <select name="king" id="king-nain">
+                                        <option value=""></option>
+                                        <option value="Moria">Moria</option>
+                                        <option value="Erebor">Erebor</option>
+                                        <option value="Les Montagnes Bleues">Les Montagnes Bleues</option>
+                                        <option value="Les Collines de Fer">Les Colinnes de Fer</option>
+                                        <option value="Aglarond">Aglarond</option>
+                                        <option value="Nogrod">Nogrod</option>
+                                        <option value="Belegost">Belegost</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="act-nain">Quel savoir apportes-tu aux tiens ?</label>
+                                    <input type="text" name="act" id="act-nain" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rich">Met la lumière sur le Trésor que tu affectionnes</label>
+                                    <input type="text" name="rich" id="rich" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="public-nain"><input type="radio" name="pp" id="public-nain" value="public" checked> Que tous contemplent tes chroniques</label>
+                                    <label for="priv-nain"><input type="radio" name="pp" id="priv-nain" value="privee"> Que seuls les élus soient témoins de tes exploits</label>
+                                </div>
+                                <button type="submit" class="button-primary">Plonge-toi dans la lumière du Palantír</button>
+                            </form>
+                        </div>
+                    </section>
+
+                    <section id="hobbit">
+                        <div class="ask_bio">
+                            <form id="boi-hobbit">
+                                <h2>Petit enfant de la Terre Douce</h2>
+                                <div class="form-group">
+                                    <label for="line-hobbit">Dis-moi la nature de ton sang</label>
+                                    <select name="line" id="line-hobbit">
+                                        <option value=""></option>
+                                        <option value="Les Forts">Les Forts</option>
+                                        <option value="Les Pâles">Les Pâles</option>
+                                        <option value="Les Pieds Velus">Les Pieds Velus</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="king-hobbit">Révèle moi le nom de la contrée qui te nourrit</label>
+                                    <select name="king" id="king-hobbit">
+                                        <option value=""></option>
+                                        <option value="La Comté">La Comté</option>
+                                        <option value="Bree">Bree</option>
+                                        <option value="Val d'Anduin">Val d'Anduin</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="act-hobbit">Comment nourris-tu ton peuple ?</label>
+                                    <input type="text" name="act" id="act-hobbit" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="loisir">Dis-moi ce qui fait danser ton coeur</label>
+                                    <input type="text" name="loisir" id="loisir">
+                                </div>
+                                <div class="form-group">
+                                    <label for="public-hobbit"><input type="radio" name="pp" id="public-hobbit" value="public" checked> Que tous contemplent tes chroniques</label>
+                                    <label for="priv-hobbit"><input type="radio" name="pp" id="priv-hobbit" value="privee"> Que seuls les élus soient témoins de tes exploits</label>
+                                </div>
+                                <button type="submit" class="button-primary">Plonge-toi dans la lumière du Palantír</button>
+                            </form>
+                        </div>
+                    </section>
+
+                    <section id="ent">
+                        <div class="ask_bio">
+                            <form id="bio-ent"></form>
+                                <h2>Ô gardien de la sagesse, voix des forêts</h2>
+                                <p>
+                                    Pour récompensé ta sagesse sans faille et ta vocation pour guider ceux qui sont perdus,
+                                    le Palantír t'accorde le droit de porter la Couronne de Feuille, en signe supperiorité vis-à-vis des autres races. <br>
+                                    Maintenant, vas en paix.
+                                </p>
+                                <div class="form-group">
+                                    <label for="public-ent"><input type="radio" name="pp" id="public-ent" value="public" checked> Que tous contemplent tes chroniques</label>
+                                    <label for="priv-ent"><input type="radio" name="pp" id="priv-ent" value="privee"> Que seuls les élus soient témoins de tes exploits</label>
+                                </div>
+                                <button type="submit" class="button-primary">Plonge-toi dans la lumière du Palantír</button>
+                            </form>
+                        </div>
+                    </section>
+
+                    <section id="istari">
+                        <div class="ask_bio">
+                            <h2>Toi qui a trahi notre confiance, soit chatié</h2>
+                            <p>
+                                Envoyés jadis par nos soins pour guider les Enfants d'Ilúvatar, 
+                                tu as, en partie, failli à ta mission. En souvenir de ton serment ancien et de la lumière que tu devais porter, 
+                                il te sera désormais interdit de dissimuler tes actions : tes comptes sont désormais exposés aux regards de tous
+                            </p>
+                            <button type="button" class="button-primary">Plonge-toi dans la lumière du Palantír</button>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+        <script src="script_bio.js"></script>
+    </body>
+</html>

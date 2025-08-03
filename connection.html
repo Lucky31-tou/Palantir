@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Palantír - Connexion</title>
+        <link rel="stylesheet" href="style_connect.css">
+    </head>
+    <body>
+        <div class="stars-container">
+            <div id="stars1"></div>
+            <div id="stars2"></div>
+            <div id="stars3"></div>
+        </div>
+        <div class="container">
+            <div class="right">
+                <div class="title-container">
+                    <img src="logo.jpg" alt="Logo de Palantír">
+                    <h1>Retrouve la Vue</h1>
+                </div>
+                <p class="intro-text">Toi qui souhaite accéder au savoir du Palantír, montre moi qui tu es</p>
+                <form id="inscription-form">
+                    <div class="form-group">
+                        <label for="name">Dis ton nom véritable, celui que nul mensonge ne peut cacher :</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mdp">Donne moi la clef qui t'ouvrira la voie : </label>
+                        <input type="password" name="mdp" id="mdp" required>
+                    </div>
+                    <div class="refus">
+                        <p>Tes dires ne correspondent pas dans les archives des anciens</p>
+                    </div>
+                    <button type="submit" class="button-primary">Forge ton destin</button>
+                    <p class="form-footer">Es-tu un nouvel arrivant en ces terres ? <a href="inscription.html">Que ton nom soit connu de tous</a></p>
+                </form>
+            </div>
+        </div>
+        <script src="script_connexion.js"></script>
+    </body>
+</html>

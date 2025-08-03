@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Palantír - Inscription</title>
+        <link rel="stylesheet" href="style_connect.css">
+    </head>
+    <body>
+        <div class="stars-container">
+            <div id="stars1"></div>
+            <div id="stars2"></div>
+            <div id="stars3"></div>
+        </div>
+        <div class="container">
+            <div class="right">
+                <div class="title-container">
+                    <img src="logo.jpg" alt="Logo de Palantír">
+                    <h1>Que ton nom soit connu</h1>
+                </div>
+                <p class="intro-text">Révèle moi qui tu es, et le Palantír t'ouvrira ses secrets.</p>
+                <form id="inscription-form">
+                    <div class="form-group">
+                        <label for="name">Révèle moi le nom que tu as reçu sous les cieux d'Arda :</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mdp">Choisi la clef qui scellera ton passage :</label>
+                        <input type="password" name="mdp" id="mdp" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mdpc">Répète le mot caché, que la vérité se reflète en son double :</label>
+                        <input type="password" name="mdpc" id="mdpc" required>
+                    </div>
+                    <div class="refus">
+                        <p>Tes deux vérités parlent en opposition</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="race">Révèle moi ta nature véritable :</label>
+                        <select name="race" id="race" required>
+                            <option value="" disabled selected>Quelle est ta lignée...</option>
+                            <option value="elfe">Elfe</option>
+                            <option value="homme">Homme</option>
+                            <option value="nain">Nain</option>
+                            <option value="hobbit">Hobbit</option>
+                            <!--<option value="ent">Ent</option>
+                            <option value="istari">Istari</option>-->
+                        </select>
+                    </div>
+                    <button type="submit" class="button-primary">Forge ton destin</button>
+                    <p class="form-footer">Déjà lié au Palantír ? <a href="connection.html">Retrouve la Vue</a></p>
+                </form>
+            </div>
+        </div>
+        <script src="script_inscription.js"></script>
+    </body>
+</html>

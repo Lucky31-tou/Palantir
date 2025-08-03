@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Palantír - Profil - Hobbit</title>
+        <link rel="stylesheet" href="style_profil_hobbit.css">
+        <style>
+            .citation {
+                font-style: italic;
+                color: #4a2c2a; /* Brun terreux, comme de l'encre sur du parchemin */
+                font-family: 'Georgia', serif; /* Police avec empattements, chaleureuse */
+                margin: 1.5em auto;
+                padding: 0 1em;
+                text-align: center;
+                max-width: 600px;
+                line-height: 1.6;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="parchment-overlay"></div>
+        <div class="animated-background">
+            <div class="stars" id="stars1"></div>
+            <div class="stars" id="stars2"></div>
+            <div class="stars" id="stars3"></div>
+        </div>
+        <header>
+            <div class="title-container">
+                <img src="../logo.jpg" alt="Logo du Palantír">
+                <h1>Palantír</h1>
+            </div>
+            <div class="search">
+                <input type="text" name="search" id="search-input" placeholder="Scruter le Palantír">
+                <button id="search-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
+                        <!-- Dégradé radial pour donner un effet de brillance -->
+                        <defs>
+                            <radialGradient id="crystalGradient" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+                            <stop offset="100%" stop-color="#6A1B9A" stop-opacity="1" />
+                            </radialGradient>
+                        </defs>
+
+                        <!-- Boule principale -->
+                        <circle cx="24" cy="24" r="16" fill="url(#crystalGradient)" stroke="#4527A0" stroke-width="2" />
+
+                        <!-- Socle -->
+                        <rect x="16" y="36" width="16" height="6" rx="2" ry="2" fill="#4527A0" />
+                    </svg>
+                </button>
+            </div>
+            <nav>
+                <ul>
+                    <li><button id="friend" class="btn-header">Ceux que tu as choisis de voir</button></li>
+                    <li><button id="abone" class="btn-header">Ceux qui suivent tes actes en ce monde</button></li>
+                    <li><button id="message" class="btn-header">Missives</button></li>
+                    <li><a href="setting_hobbit.html">Ce qui ne se voit pas</a></li>
+                    <li class="logout-button">
+                        <a href="../acceuil.html" title="Retirer ton esprit du Palantír">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="profil">
+                <img src="photo_profil.jpg" alt="Photo de profil" class="photo-profil">
+                <h2 id="name"></h2>
+                <p class="citation">"Toi qui cultives la paix et l'amitié mieux que les rois ne cultivent leurs royaumes, que la Terre-Mère veille sur chacun de tes pas légers."</p>
+                <ul>
+                    <li id="line"></li>
+                    <li id="king"></li>
+                    <li id="donation"></li>
+                    <li id="passion"></li>
+                </ul>
+            </div>
+            <div class="post-ami">
+                <div class="new-post">
+                    <button id="new-post-btn">Grave tes mots au sein du Palantír</button>
+                </div>
+                <dialog id="create-new-post">
+                    <textarea name="new-post-content" id="new-post-text" placeholder="Quelle message veux-tu graver dans le Palantír ?"></textarea>
+                    <button id="add">Que tes mots retantissent</button>
+                    <button id="no-add">Que nul n'entende ta voix</button>
+                </dialog>
+                <div id="post-container">
+                </div>
+            </div>
+            <div class="search-list">
+            </div>
+            <div class="friend-list"></div>
+        </main>
+        <script src="script_profil_hobbit.js"></script>
+        <script src="../script_profil_commun.js"></script>
+        <script>
+            // Gère la disparition du parchemin après l'animation
+            window.addEventListener('load', () => {
+                const overlay = document.getElementById('parchment-overlay');
+                overlay.addEventListener('animationend', () => {
+                    overlay.style.display = 'none';
+                });
+            });
+        </script>
+    </body>
+</html>
