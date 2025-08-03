@@ -21,6 +21,11 @@ git clone https://github.com/Lucky31-tou/Palantir.git
 ```
 2. Ouvrir le fichier acceuil.html dans votre navigateur
 
+## 🔗 Lien vers la démo
+
+Vous pouvez voir le projet en ligne ici :  
+[Simulation réseau social - Palantír](https://lucky31-tou.github.io/Palantir/)
+
 ## 📁 Structure du projet
 Le projet contient :
 - Plusieurs fichiers HTML pour les différentes interfaces
